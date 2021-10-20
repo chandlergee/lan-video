@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    {%load static%}
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="{% static './layui.js'%}"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        a {
+            display: inline-block;
+            width: 80%;
+            height: 64px;
+            border: solid 1px grey;
+            border-radius: 4px;
+            text-align: center;
+            line-height: 64px;
+            text-decoration: none;
+            font-size: larger;
+            color: honeydew;
+            background-color: darkblue;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            background-color: dodgerblue;
+        }
+
+        select {
+            width: 80%;
+            height: 48px;
+            text-align: center;
+            text-align-last: center;
+            font-size: larger;
+            background-color: rgb(22, 212, 181);
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>解析器</h2>
+    <select name="" id="parser">
+        {%for item in parser_list%}
+        {%if item.id == cur_parser.id%}
+        <option value="{{item.id}}" selected="selected">{{item.name}}</option>
+        {%else%}
+        <option value="{{item.id}}">{{item.name}}</option>
+        {%endif%}
+        {%endfor%}
+    </select>
+    <h2>电视剧</h2>
+    {% for item in tv_list%}
+    <a href="/videos/series/{{item.id}}">{{item.tv_name}}</a>
+    {%endfor%}
+    <hr>
+    <h2>电影</h2>
+    {% for item in mv_list%}
+    <a href="{{cur_parser.0.p_url}}{{item.mv_url}}">{{item.mv_name}}</a>
+    {%endfor%}
+</body>
+<script>
+    $("#parser").change(function(){
+        index = $(this).val()
+        $.ajax({
+            url: '/videos/parser/' + index,
+            type: 'get',
+            success: function(res)
+            {
+                location.href = ''
+            },
+            error: function(res)
+            {
+
+            }
+        })
+    })
+</script>
+</html>
