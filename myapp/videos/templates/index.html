@@ -60,6 +60,11 @@
     <a href="/videos/series/{{item.id}}">{{item.tv_name}}</a>
     {%endfor%}
     <hr>
+    <h2>系列电影</h2>
+    {% for item in movie_series %}
+    <a href="/videos/movie_series/{{item.id}}">{{item.name}}</a>
+    {% endfor %}
+    <hr>
     <h2>电影</h2>
     {% for item in mv_list%}
     <a href="{{cur_parser.0.p_url}}{{item.mv_url}}">{{item.mv_name}}</a>
