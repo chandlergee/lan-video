@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,28 +10,62 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="{% static './layui.js'%}"></script>
     <style>
+        html {
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
         body {
             text-align: center;
+            width: 100%;
+            height: 100%;
         }
 
-        a {
-            display: inline-block;
-            width: 80%;
-            height: 64px;
-            border: solid 1px grey;
-            border-radius: 4px;
-            text-align: center;
-            line-height: 64px;
-            text-decoration: none;
-            font-size: larger;
-            color: honeydew;
-            background-color: darkblue;
-            margin-top: 10px;
+        @media screen and (min-width:960px) {
+            a {
+                display: inline-block;
+                width: 25%;
+                height: 64px;
+                border: solid 1px grey;
+                border-radius: 4px;
+                text-align: center;
+                line-height: 64px;
+                text-decoration: none;
+                font-size: larger;
+                color: honeydew;
+                background-color: darkblue;
+                margin-top: 10px;
+            }
+
+            a:hover {
+                background-color: dodgerblue;
+            }
+
         }
 
-        a:hover {
-            background-color: dodgerblue;
+        @media screen and (max-width:960px) {
+            a {
+                display: inline-block;
+                width: 80%;
+                height: 64px;
+                border: solid 1px grey;
+                border-radius: 4px;
+                text-align: center;
+                line-height: 64px;
+                text-decoration: none;
+                font-size: larger;
+                color: honeydew;
+                background-color: darkblue;
+                margin-top: 10px;
+            }
+
+            a:hover {
+                background-color: dodgerblue;
+            }
         }
+
+
 
         select {
             width: 80%;
@@ -44,6 +79,7 @@
         }
     </style>
 </head>
+
 <body>
     <h2>解析器</h2>
     <select name="" id="parser">
@@ -71,20 +107,19 @@
     {%endfor%}
 </body>
 <script>
-    $("#parser").change(function(){
+    $("#parser").change(function () {
         index = $(this).val()
         $.ajax({
             url: '/videos/parser/' + index,
             type: 'get',
-            success: function(res)
-            {
+            success: function (res) {
                 location.href = ''
             },
-            error: function(res)
-            {
+            error: function (res) {
 
             }
         })
     })
 </script>
+
 </html>
