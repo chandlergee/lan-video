@@ -103,7 +103,6 @@ class VideoParser(models.Model):
         verbose_name_plural = '视频解析器'
 
 class MovieSeries(models.Model):
-    id = models.IntegerField(primary_key=True,auto_created=True,editable=False)
     name = models.CharField(max_length=64,verbose_name='名称')
     create_date = models.DateField(verbose_name='创建时间')
     movies = models.ManyToManyField(Movie,verbose_name='电影集')
@@ -115,4 +114,6 @@ class MovieSeries(models.Model):
     class Meta:
         verbose_name = '电影系列'
         verbose_name_plural = '电影系列'
+        
+        
 
