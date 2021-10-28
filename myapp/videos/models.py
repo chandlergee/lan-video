@@ -12,6 +12,7 @@ class CountryCode(models.TextChoices):
     IND = '印度','印度'
     OTH = '其它','其它'
 
+
 class VideoType(models.TextChoices):
     '''影片类型'''
     COMEDY = '喜剧','喜剧'
@@ -29,6 +30,7 @@ class VideoType(models.TextChoices):
     FANTACY = '科幻','科幻'
     WAR = '战争','战争'
     YOUTH = '青春','青春'
+
 
 class TVSeries(models.Model):
     '''电视连续剧'''
@@ -66,6 +68,7 @@ class Episode(models.Model):
         verbose_name = '剧集'
         verbose_name_plural = '剧集'
 
+
 class Movie(models.Model):
     '''电影'''
     id = models.IntegerField(primary_key=True,auto_created=True,editable=False)
@@ -90,6 +93,7 @@ class Movie(models.Model):
         verbose_name = '电影'
         verbose_name_plural = '电影'
 
+
 class VideoParser(models.Model):
     id = models.IntegerField(primary_key=True,auto_created=True,editable=False)
     name = models.CharField(max_length=36,verbose_name='名称')
@@ -101,6 +105,7 @@ class VideoParser(models.Model):
     class Meta:
         verbose_name = '视频解析器'
         verbose_name_plural = '视频解析器'
+
 
 class MovieSeries(models.Model):
     name = models.CharField(max_length=64,verbose_name='名称')
