@@ -27,10 +27,10 @@ if args.a is True:
         episodes.extend(json.loads(fd.read()))
 
 for item in soup.find_all('a'):
-    print(type(item))
+    print(item.text)
     episodes.append(
         {
-            'name' : '{0} 第{1}集'.format(args.n,str(item.contents[0]).strip()),
+            'name' : '{0} 第{1}集'.format(args.n,item.text),
             'href' : '{0}'.format(args.u) + item.get('data-href',item.get('href','xxxxx'))
         }
     )
