@@ -72,10 +72,10 @@
     </style>
 </head>
 <body>
-    <iframe id="video" src="" name="video">视频</iframe>
+    {% comment %} <iframe id="video" src="" name="video">视频</iframe> {% endcomment %}
     <h2>{{series_name}}</h2>
     {%for item in series%}
-    <a href="{{cur_parser.0.p_url}}{{item.mv_url}}" target="video">{{item.mv_name}}</a>
+    <a href="{{cur_parser.0.p_url}}{{item.mv_url}}>{{item.mv_name}}</a>
     {%endfor%}
 </body>
 </html>
